@@ -32,3 +32,27 @@ type LocationResponse struct {
 	Status      string    `json:"status"`
 	LastUpdated time.Time `json:"last_updated"`
 }
+
+func (Location) TableName() string {
+	return "locations"
+}
+
+func (l *Location) ToResponse() LocationResponse {
+	status := "idle"
+	if l.Speed > 5 {
+		status = "moving"
+	} else if l.Speed > 0 {
+		status = "idle"
+	} else {
+		status = "stopped"
+	}
+
+	return LocationResponse{
+		VehicleID:   l.VehicleID,
+		Latitude:    l.Latitude,
+		Longitude:   l.Longitude,
+		Speed:       l.Speed,
+		Status:      status,
+		LastUpdated: l.Timestamp,
+	}
+}
