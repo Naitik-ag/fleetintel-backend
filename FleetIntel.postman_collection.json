@@ -1,0 +1,398 @@
+{
+  "info": {
+    "name": "FleetIntel API - Complete",
+    "description": "Complete API testing for FleetIntel delivery tracking system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health & System",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Agent Management",
+      "item": [
+        {
+          "name": "Register Agent - Ramesh (Bike)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"AGENT001\",\n  \"name\": \"Ramesh Kumar\",\n  \"phone\": \"+919876543210\",\n  \"email\": \"ramesh@example.com\",\n  \"vehicle_type\": \"bike\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/agents",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents"]
+            }
+          }
+        },
+        {
+          "name": "Register Agent - Priya (Scooter)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"AGENT002\",\n  \"name\": \"Priya Sharma\",\n  \"phone\": \"+919876543211\",\n  \"email\": \"priya@example.com\",\n  \"vehicle_type\": \"scooter\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/agents",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents"]
+            }
+          }
+        },
+        {
+          "name": "Register Agent - Amit (Car)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"AGENT003\",\n  \"name\": \"Amit Patel\",\n  \"phone\": \"+919876543212\",\n  \"email\": \"amit@example.com\",\n  \"vehicle_type\": \"car\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/agents",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents"]
+            }
+          }
+        },
+        {
+          "name": "List All Agents",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/agents",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents"]
+            }
+          }
+        },
+        {
+          "name": "Get Agent by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/agents/AGENT001",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents", "AGENT001"]
+            }
+          }
+        },
+        {
+          "name": "Update Agent Status to Available",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"available\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/agents/AGENT001/status",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents", "AGENT001", "status"]
+            }
+          }
+        },
+        {
+          "name": "Update Agent Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ramesh Kumar Singh\",\n  \"vehicle_type\": \"car\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/agents/AGENT001",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents", "AGENT001"]
+            }
+          }
+        },
+        {
+          "name": "Filter Agents by Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/agents?status=available",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "available"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Agent Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/agents/AGENT001/stats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents", "AGENT001", "stats"]
+            }
+          }
+        },
+        {
+          "name": "Soft Delete Agent",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/agents/AGENT003",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents", "AGENT003"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Location Tracking",
+      "item": [
+        {
+          "name": "Submit Location - Stopped",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_id\": \"AGENT001\",\n  \"latitude\": 28.6139,\n  \"longitude\": 77.2090,\n  \"speed\": 0,\n  \"heading\": 0,\n  \"accuracy\": 10.0,\n  \"altitude\": 250.0,\n  \"timestamp\": \"2024-12-08T10:30:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/tracking/location",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tracking", "location"]
+            }
+          }
+        },
+        {
+          "name": "Submit Location - Moving",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_id\": \"AGENT001\",\n  \"latitude\": 28.6200,\n  \"longitude\": 77.2100,\n  \"speed\": 45,\n  \"heading\": 180,\n  \"accuracy\": 8.0,\n  \"altitude\": 255.0,\n  \"timestamp\": \"2024-12-08T10:35:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/tracking/location",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tracking", "location"]
+            }
+          }
+        },
+        {
+          "name": "Submit Location - Idle",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_id\": \"AGENT001\",\n  \"latitude\": 28.6250,\n  \"longitude\": 77.2150,\n  \"speed\": 3,\n  \"heading\": 175,\n  \"accuracy\": 12.0,\n  \"altitude\": 260.0,\n  \"timestamp\": \"2024-12-08T10:40:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/tracking/location",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tracking", "location"]
+            }
+          }
+        },
+        {
+          "name": "Get Live Location",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/tracking/location/AGENT001",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tracking", "location", "AGENT001"]
+            }
+          }
+        },
+        {
+          "name": "Get Location History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/tracking/history/AGENT001",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tracking", "history", "AGENT001"]
+            }
+          }
+        },
+        {
+          "name": "Get Location History with Limit",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/tracking/history/AGENT001?limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tracking", "history", "AGENT001"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Error Cases",
+      "item": [
+        {
+          "name": "Register Duplicate Agent ID",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"AGENT001\",\n  \"name\": \"Duplicate\",\n  \"phone\": \"+919999999999\",\n  \"email\": \"dup@example.com\",\n  \"vehicle_type\": \"bike\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/agents",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents"]
+            }
+          }
+        },
+        {
+          "name": "Invalid Vehicle Type",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"AGENT999\",\n  \"name\": \"Test\",\n  \"phone\": \"+919999999998\",\n  \"email\": \"test@example.com\",\n  \"vehicle_type\": \"helicopter\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/agents",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents"]
+            }
+          }
+        },
+        {
+          "name": "Get Non-Existent Agent",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/agents/AGENT999",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents", "AGENT999"]
+            }
+          }
+        },
+        {
+          "name": "Invalid Status Update",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"sleeping\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/agents/AGENT001/status",
+              "host": ["{{base_url}}"],
+              "path": ["api", "agents", "AGENT001", "status"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8001"
+    }
+  ]
+}
